@@ -11,17 +11,23 @@ class Player(pygame.sprite.Sprite):
         self.image = self.images[0]
         self.rect = self.image.get_rect()
 
-    def attack(self,pos0,posF):
-        spell1 = pygame.image.load("images/Fireball.png")
-        spell1.images.append(spell1)
-        spell1.image = spell1.images[0]
-        spell1.rect = spell1.image.get_rect()
-        spell1.rect.x = pos0[0]
-        spell1.rect.y = pos0[1]
-        if pos0[0] > posF[0] and pos0[1] > posF[1]:
-            spell1.image.fill(0,0,0,0)
-        else:
-            spell1.rect.x += 10
-            spell1.rect.y += 10
+    def attack(self,display):
+        spell1_img = pygame.image.load("images/Fireball.png")
+        display.blit(spell1_img,(self.rect.x+50,self.rect.y))
 
+
+    def move(self,player_speed,walk_song):
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_d] and self.rect.x < 740:
+            walk_song.play()
+            self.rect.x += player_speed
+        elif keys[pygame.K_a] and self.rect.x > 0:
+            walk_song.play()
+            self.rect.x -= player_speed
+        elif keys[pygame.K_w] and self.rect.y > 10:
+            walk_song.play()
+            self.rect.y -= player_speed
+        elif keys[pygame.K_s] and self.rect.y < 490:
+            walk_song.play()
+            self.rect.y += player_speed
 
