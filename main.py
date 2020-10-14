@@ -1,6 +1,6 @@
 import random, pygame, sys
 from pygame.locals import *
-import menu
+from menu import *
 
 WINDOWWIDTH = 800
 WINDOWHEIGHT = 600
@@ -15,8 +15,7 @@ pygame.display.set_caption("Ari's RPG")
 
 state = 0
 def main():
-    if state == 0:
-        menu.menu(DISPLAYSURF, WINDOWWIDTH, WINDOWHEIGHT, FPS)
+    menu(DISPLAYSURF, WINDOWWIDTH, WINDOWHEIGHT, FPS)
     return state
 
 
