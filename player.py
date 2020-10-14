@@ -13,8 +13,9 @@ class Player(pygame.sprite.Sprite):
 
     def attack(self,display):
         spell1_img = pygame.image.load("images/Fireball.png")
+        spell1_sound = pygame.mixer.Sound("audio/flame-1.wav")
+        spell1_sound.play()
         display.blit(spell1_img,(self.rect.x+50,self.rect.y))
-
 
     def move(self,player_speed,walk_song):
         keys = pygame.key.get_pressed()
